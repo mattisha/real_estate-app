@@ -1,3 +1,16 @@
 from django.db import models
+from datetime import datetime
+class Realtor(models.Model):
+    name = models.CharField(max_length=200)
+    photo = models.ImageField(upload_to='photos/%y/%m/%d/',height_field=None, width_field=None, max_length=None)
+    description = models.TextField(blank=True, null=True)
+    email = models.EmailField(max_length=254)
+    phone = models.IntegerField()
+    is_mvp = models.BooleanField(default=False)
+    hire_date = models.DateTimeField(datetime.now,blank=True)
+    
 
-# Create your models here.
+    def __str__(self):
+         return self.name
+
+   
